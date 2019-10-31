@@ -23,15 +23,13 @@ for iter = 1:num_iters
     
     % fprintf('\nCost computed = %f\n', iter);
 
-    % for i = 1:2
-    %     theta(i) = theta(i) - alpha*((1/m)*(sum((y-(X*theta)).*X(:,i)*(-1))));
-    % end 
+    tempTheta = zeros(size(theta, 1), size(theta, 2));
 
-    th1 = theta(1) - alpha*((1/m)*(sum((y-(X*theta)).*X(:,1)*(-1))));
-    th2 = theta(2) - alpha*((1/m)*(sum((y-(X*theta)).*X(:,2)*(-1))));
-    theta = [th1; th2];
+    for i = 1:size(theta, 1)
+        tempTheta(i) = theta(i) - alpha*((1/m)*(sum((y-(X*theta)).*X(:,i)*(-1))));
+    end 
 
-    theta
+    theta = tempTheta;
 
     J_history(iter) = computeCost(X, y, theta);
 
