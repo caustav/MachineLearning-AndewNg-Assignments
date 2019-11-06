@@ -32,7 +32,7 @@ X = [ones(m, 1) X];
 %       
 size(X)
 size(all_theta)
-[pval, p] = max((X*(all_theta')), [], 2);
+[pval, p] = max(sigmoid((X*(all_theta'))), [], 2);
 p
 
 
